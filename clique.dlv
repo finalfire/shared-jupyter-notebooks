@@ -18,6 +18,9 @@ inFinal(X,Y) :- in(X,Y), X < Y.
 %:~ clique(X), not important(X). [1@1,X]
 
 % massimizzare l'importanza degli archi all'interno della cricca
-:~ node(X), not clique(X), imp(X,Y,P). [P@1,X,Y]
+:~ node(X), not clique(X), imp(X,Y,P). [P@2,X,Y]
+:~ clique(X). [1@1,X] 
+
+%:- sum { P,X : clique(X), imp(X,_,P) } >= S, threshold(S).
 
 % ------------------------------
