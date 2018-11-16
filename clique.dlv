@@ -1,0 +1,23 @@
+%% facts are: edge(X,Y), node(X). imp(X,Y,P).
+
+edge(Y,X) :- edge(X,Y).
+imp(Y,X,P) :- imp(X,Y,P).
+
+% in(X,Y):- edge(X,Y), not clique(X), not clique(Y).    % mantengo quelli fuori dalla cricca
+in(X,Y) :- edge(X,Y), clique(X), clique(Y).
+inFinal(X,Y) :- in(X,Y), X < Y.
+
+% ------------------------------
+
+{clique(X)} :- node(X).
+:- clique(X), clique(Y), X < Y, not edge(X,Y).
+%:~ node(X), not clique(X). [1@1,X]
+
+% aggiunta per nuovo framework:
+% massimizzo il numero di nodi importanti all'interno della struttura
+%:~ clique(X), not important(X). [1@1,X]
+
+% massimizzare l'importanza degli archi all'interno della cricca
+:~ node(X), not clique(X), imp(X,Y,P). [P@1,X,Y]
+
+% ------------------------------
