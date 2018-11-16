@@ -57,7 +57,7 @@ def main():
 
                 # salvo ad indice i
                 results.append((
-                    stage, patient, n_edge,
+                    stage, patient, n_edge+1,
                     c1_value, c2_value, c3_value, c4_value, label
                 ))
     
