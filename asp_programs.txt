@@ -1,0 +1,5 @@
+clique
+independent-set
+k-hub
+maxdegree
+vertex-cover
